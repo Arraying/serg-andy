@@ -1,5 +1,5 @@
 name: assignments_test_docker
-on: push
+on: [push, pull_request]
 jobs:
   run_assignments_docker:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
       - name: Build Docker image
         working-directory: ./weblab-docker
         env:
-          BUILD_ARGS: "--build-arg ANDY_BRANCH=${{ github.sha }}"
+          BUILD_ARGS: "--build-arg ANDY_BRANCH=${{ github.sha }} --build-arg ANDY_REPO=${{ github.action_repository }}"
         run: |
           make
 
