@@ -34,6 +34,6 @@ jobs:
         env:
           # github.repository contains owner, we don't want that
           REPO_NAME: ${{ github.event.repository.name }}
-          COMMIT_HASH: {{ env.GHA_SHA }}
+          COMMIT_HASH: ${{ env.GHA_SHA }}
         run: |
           python ./.github/scripts/assignments_test_docker.py
